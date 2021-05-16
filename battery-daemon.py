@@ -38,3 +38,5 @@ def main():
    print("Unknown command")
    sys.exit(2)
  sys.exit(0)
+
+main()
