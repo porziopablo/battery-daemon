@@ -35,34 +35,32 @@ class BatteryDaemon(Daemon):
 
   # gets proxy for battery info
   batteryObject = bus.get_object('org.freedesktop.UPower', '/org/freedesktop/UPower/devices/battery_BAT0')
-  batteryProxy = dbus.Interface(batteryObject, 'org.freedesktop.DBus.Properties')
+  self.batteryProxy = dbus.Interface(batteryObject, 'org.freedesktop.DBus.Properties')
 
   # gets proxy for AC power
   acObject = bus.get_object('org.freedesktop.UPower', '/org/freedesktop/UPower/devices/line_power_AC')
-  acProxy = dbus.Interface(acObject, 'org.freedesktop.DBus.Properties')
+  self.acProxy = dbus.Interface(acObject, 'org.freedesktop.DBus.Properties')
 
-  return [acProxy, batteryProxy]
-
- def isBatteryFull(self, batteryProxy):
+ def isBatteryFull(self):
   """ Checks if battery is fully charged. """
 
-  batteryState = batteryProxy.Get("org.freedesktop.UPower.Device", "State")
+  batteryState = self.batteryProxy.Get("org.freedesktop.UPower.Device", "State")
 
   print(batteryState == BATTERY_POWER_STATE.FULLY_CHARGED.value)
 
- def isACPowerOn(self, acProxy):
+ def isACPowerOn(self):
   """ Checks if AC power line is connected. """
 
-  acState = acProxy.Get('org.freedesktop.UPower.Device', 'Online')
+  acState = self.acProxy.Get('org.freedesktop.UPower.Device', 'Online')
 
   print(acState == AC_POWER_STATE.ONLINE.value)
 
  def run(self):
-  [acProxy, batteryProxy] = self.initProxies()
+  self.initProxies()
 
   while True:
-   self.isBatteryFull(batteryProxy)
-   self.isACPowerOn(acProxy)
+   self.isBatteryFull()
+   self.isACPowerOn()
    time.sleep(1)
 
 def main():
