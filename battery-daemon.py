@@ -1,7 +1,6 @@
 #!/usr/bin/env python
  
-import sys, time
-import dbus
+import sys, time, dbus, logging
 from daemon import Daemon
 from enum import Enum
 
@@ -26,6 +25,11 @@ class BatteryDaemon(Daemon):
  """ Daemon that checks battery percentage and state using info
  provided by `D-BUS`, and logs when the battery is full and connected to AC power. """
 
+ def __init__(self, pidfile):
+  super().__init__(pidfile)
+  logging.basicConfig(filename='/tmp/battery-daemon.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+  self.initProxies()
+
  def initProxies(self):
   """ Initializes proxies that supply info about battery and AC power
   from `UPower` application through an interface. """
@@ -46,21 +50,22 @@ class BatteryDaemon(Daemon):
 
   batteryState = self.batteryProxy.Get("org.freedesktop.UPower.Device", "State")
 
-  print(batteryState == BATTERY_POWER_STATE.FULLY_CHARGED.value)
+  return batteryState == BATTERY_POWER_STATE.FULLY_CHARGED.value
 
  def isACPowerOn(self):
   """ Checks if AC power line is connected. """
 
   acState = self.acProxy.Get('org.freedesktop.UPower.Device', 'Online')
 
-  print(acState == AC_POWER_STATE.ONLINE.value)
+  return acState == AC_POWER_STATE.ONLINE.value
+
+ def log(self):
+  logging.info('battery is fully charged but charger is still connected.')
 
  def run(self):
-  self.initProxies()
-
   while True:
-   self.isBatteryFull()
-   self.isACPowerOn()
+   if (self.isBatteryFull() and self.isACPowerOn()):
+    self.log()
    time.sleep(1)
 
 def main():
