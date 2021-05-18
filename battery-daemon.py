@@ -27,7 +27,7 @@ class BatteryDaemon(Daemon):
 
  def __init__(self, pidfile):
   super().__init__(pidfile)
-  logging.basicConfig(filename='/tmp/battery-daemon.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+  logging.basicConfig(filename='/var/log/battery-daemon/battery-daemon.log', level=logging.INFO, format='%(asctime)s - %(message)s')
   self.initProxies()
 
  def initProxies(self):
