@@ -10,7 +10,7 @@ Programar un daemon para Linux que detecte si la batería está cargada completa
 
 ## Instalación
 
-1 - Clonar repo
+1 - Clonar repo:
 
 ```
 $ git clone https://github.com/porziopablo/battery-daemon.git
