@@ -22,7 +22,7 @@ $ git clone https://github.com/porziopablo/battery-daemon.git
 $ sudo mkdir /var/log/battery-daemon
 ```
 
-3 - Transferir propiedad al usuario que ejecutará el daemon:
+3 - Transferir propiedad al `usuario` que ejecutará el daemon:
 
 ```
 $ sudo chown usuario /var/log/battery-daemon
