@@ -1,7 +1,7 @@
 # battery-daemon
 > TP1 - Software Libre - 2021 - FI-UNMdP
 
-Programar un daemon para Linux que detecte si la batería está cargada completamente y el sistema enchufado, y lo registre en un archivo en `/var/log`. Realizado en `Python 3`
+Programar un daemon para Linux que detecte si la batería está cargada completamente y el sistema enchufado, y lo registre en un archivo en `/var/log`. Realizado en `Python 3`.
 
 ## Alumnos 
   - Mariquena Gros
