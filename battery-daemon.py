@@ -66,7 +66,7 @@ class BatteryDaemon(Daemon):
   while True:
    if (self.isBatteryFull() and self.isACPowerOn()):
     self.log()
-   time.sleep(1)
+   time.sleep(30) # segundos
 
 def main():
  daemon = BatteryDaemon('/tmp/battery-daemon.pid')
