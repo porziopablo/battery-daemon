@@ -13,19 +13,19 @@ Daemon para Linux que detecta si la batería está cargada completamente y el si
 1 - Clonar repo:
 
 ```
-$ git clone https://github.com/porziopablo/battery-daemon.git
+git clone https://github.com/porziopablo/battery-daemon.git
 ```
 
 2 - Crear directorio para logs:
 
 ```
-$ sudo mkdir /var/log/battery-daemon
+sudo mkdir /var/log/battery-daemon
 ```
 
 3 - Transferir propiedad al `usuario` que ejecutará el daemon:
 
 ```
-$ sudo chown usuario /var/log/battery-daemon
+sudo chown usuario /var/log/battery-daemon
 ```
 
 ## Ejecución
@@ -33,20 +33,20 @@ $ sudo chown usuario /var/log/battery-daemon
 1 - Correr: 
 
 ```
-$ python3 battery-daemon.py start
+python3 battery-daemon.py start
 ```
 
 2 - Detener: 
 
 ```
-$ python3 battery-daemon.py stop
+python3 battery-daemon.py stop
 ```
 
 
 3 - Reiniciar:
 
 ```
-$ python3 battery-daemon.py restart
+python3 battery-daemon.py restart
 ```
 
 ## Fuentes
