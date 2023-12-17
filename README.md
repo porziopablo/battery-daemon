@@ -1,58 +1,58 @@
 # battery-daemon
 > TP1 - Software Libre - 2021 - FI-UNMdP
 
-Daemon para Linux que detecta si la batería está cargada completamente y el sistema enchufado, y lo registra en un archivo en `/var/log`. Realizado en `Python 3`.
+Daemon for Linux that detects if the battery is completely charged and the computer is plugged-in, and then registers it in a file in `/var/log`. Made with `Python 3`.
 
-## Alumnos 
+## Authors 
   - Mariquena Gros
   - Pablo Porzio
 
 
-## Instalación
+## Installation
 
-1 - Clonar repo:
+1 - Clone repo:
 
 ```
 git clone https://github.com/porziopablo/battery-daemon.git
 ```
 
-2 - Crear directorio para logs:
+2 - Create logs directory:
 
 ```
 sudo mkdir /var/log/battery-daemon
 ```
 
-3 - Transferir propiedad al `usuario` que ejecutará el daemon:
+3 - Transfer ownership to the `user` that will run the daemon:
 
 ```
 sudo chown usuario /var/log/battery-daemon
 ```
 
-## Ejecución
+## Execution
 
-1 - Correr: 
+1 - Start: 
 
 ```
 python3 battery-daemon.py start
 ```
 
-2 - Detener: 
+2 - Stop: 
 
 ```
 python3 battery-daemon.py stop
 ```
 
 
-3 - Reiniciar:
+3 - Restart:
 
 ```
 python3 battery-daemon.py restart
 ```
 
-## Fuentes
+## Sources
 
-- [Esqueleto de daemon](https://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/)
-- [Librería dbus para Python](https://dbus.freedesktop.org/doc/dbus-python/tutorial.html)
-- [Servicio UPower](https://upower.freedesktop.org/docs/Device.html)
-- [Código base para UPower](https://gist.github.com/kjmkznr/1343846)
-- [Librería logging para Python](https://docs.python.org/3/howto/logging.html)
+- [Daemon template](https://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/)
+- [Dbus library for Python](https://dbus.freedesktop.org/doc/dbus-python/tutorial.html)
+- [UPower service](https://upower.freedesktop.org/docs/Device.html)
+- [Upower source code](https://gist.github.com/kjmkznr/1343846)
+- [Logging library for Python](https://docs.python.org/3/howto/logging.html)
